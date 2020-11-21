@@ -43,15 +43,20 @@ public class SudokuSolver implements ISodukoSolver {
 
     @Override
     public final int[][] readSudoku(File file) {
-        //List<Integer<String>> values = new Map<Integer<String>;
-        try (Stream<String> lines = Files.lines(Paths.get("1_sudoku_level1"))) {
-	   // values = lines.map(line -> Arrays.asList(line.split(","))).collect(Collectors.toList());
-	//		values.forEach(value -> System.out.println(value));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        
-       // int[][] data = new int[v][];
+
+        try (Stream<String> lines = Files.lines(Paths.get(String.valueOf(file)))) {
+            List<List<String>> values = lines.map(line -> Arrays.asList(line.split(","))).collect(Collectors.toList());
+            //values.forEach(value ->)
+            int[][] emptySudoku = new int[9][9];
+            for(int i = 0; i < emptySudoku.length; i++){
+                for (List<String> value : values) {
+
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         
         return new int[0][0]; // delete this line!
     }
@@ -80,8 +85,15 @@ public class SudokuSolver implements ISodukoSolver {
 
     @Override
     public int[][] solveSudoku(int[][] rawSudoku) {
-        // implement this method
-        return new int[0][0]; // delete this line!
+        int x = 0;
+        int y = 0;
+        boolean solved = true;
+        for(int i = 0; i < rawSudoku[x][0]; i++){
+            if(rawSudoku[x][0] == rawSudoku[x][1]){
+                solved = false;
+            }
+        }
+        return rawSudoku;
     }
     
     @Override
